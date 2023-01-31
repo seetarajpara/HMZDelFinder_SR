@@ -105,7 +105,7 @@ calcRPKMsFromBAMs <- function (bedFile, bamFiles, sampleNames, outputDir, mc.cor
 				file <- bamFiles[i]
 				prefix <- sampleNames[i]
 				outputFile <- paste0(outputDir, prefix, "_rpkm2.txt")
-				res <-  featureCounts(files=file, annot.ext=df, allowMultiOverlap=TRUE, nthreads=3)
+				res <-  featureCounts(files=file, annot.ext=df, allowMultiOverlap=TRUE, nthreads=3,isPairedEnd=TRUE)
 				total <- sum(res$stat[2])
 				counts <- data.frame(res$counts)
 				colnames(counts) <- "count"
